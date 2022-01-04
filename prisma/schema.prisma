@@ -16,6 +16,8 @@ model User {
   name  String 
   password String
   disbursements Disbursement[]
+  expenseItems expenseItem[]
+  paymentMethods paymentMethod[]
 }
 
 model Disbursement {
@@ -23,4 +25,26 @@ id Int @default(autoincrement()) @id
 sum Int @default(0)
 user User @relation(fields:[userId],references: [id])
 userId Int
+expenseItem expenseItem @relation(fields:[expenseItemId],references: [id])
+expenseItemId Int
+paymentMethod paymentMethod @relation(fields:[paymentMethodId],references: [id])
+paymentMethodId Int
+}
+
+model expenseItem{
+  id Int @default(autoincrement()) @id
+  expenseItemName String 
+  user User @relation(fields:[userId],references: [id])
+  userId Int
+  disbursements Disbursement[]
+  paymentMethods paymentMethod[]
+}
+
+model paymentMethod {
+  id Int @default(autoincrement()) @id
+  paymentMethodName String
+  user User @relation(fields:[userId],references: [id])
+  userId Int
+ disbursements Disbursement[]
+ expenseItems expenseItem[]
 }
