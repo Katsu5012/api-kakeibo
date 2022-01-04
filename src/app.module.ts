@@ -10,14 +10,31 @@ import { ExpenseItemsModule } from './expense-items/expense-items.module';
 import { PaymentMethodsController } from './payment-methods/payment-methods.controller';
 import { PaymentMethodsService } from './payment-methods/payment-methods.service';
 import { PaymentMethodsModule } from './payment-methods/payment-methods.module';
-import { DisbursementController } from './disbursement/disbursement.controller';
 import { DisbursementsController } from './disbursements/disbursements.controller';
 import { DisbursementsService } from './disbursements/disbursements.service';
 import { DisbursementsModule } from './disbursements/disbursements.module';
 
 @Module({
-  imports: [UsersModule, ExpenseItemsModule, PaymentMethodsModule, DisbursementsModule],
-  controllers: [AppController, UsersController, ExpenseItemsController, PaymentMethodsController, DisbursementController, DisbursementsController],
-  providers: [AppService, UsersService, ExpenseItemsService, PaymentMethodsService, DisbursementsService],
+  imports: [
+    UsersModule,
+    ExpenseItemsModule,
+    PaymentMethodsModule,
+    DisbursementsModule,
+  ],
+  controllers: [
+    AppController,
+    UsersController,
+    ExpenseItemsController,
+    PaymentMethodsController,
+
+    DisbursementsController,
+  ],
+  providers: [
+    AppService,
+    UsersService,
+    ExpenseItemsService,
+    PaymentMethodsService,
+    DisbursementsService,
+  ],
 })
 export class AppModule {}
