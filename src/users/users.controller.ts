@@ -10,4 +10,9 @@ export class UsersController {
   async createUser(@Body() body: any): Promise<User> {
     return this.usersService.create(body);
   }
+
+  /**
+   * TODO
+   * 認証作成してからログインユーザーのCRUD作成
+   */
 }
