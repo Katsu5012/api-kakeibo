@@ -16,4 +16,12 @@ export class UsersService {
       where,
     });
   }
+
+  async getMe(id: number): Promise<User> {
+    const me = await this.prisma.user.findUnique({
+      where: { id: id },
+      include: { expenseItems: true, paymentMethods: true },
+    });
+    return me;
+  }
 }

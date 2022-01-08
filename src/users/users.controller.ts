@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from '@prisma/client';
 
@@ -15,4 +15,9 @@ export class UsersController {
    * TODO
    * 認証作成してからログインユーザーのCRUD作成
    */
+  // TODO   getMe 削除
+  @Get()
+  async getMe() {
+    return await this.usersService.getMe(1);
+  }
 }

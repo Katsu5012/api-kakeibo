@@ -25,18 +25,18 @@ model Disbursement {
 id Int @default(autoincrement()) @id
 date String
 sum Int @default(0)
-user User @relation(fields:[userId],references: [id])
+user User @relation(fields:[userId],references: [id],onDelete:Cascade,onUpdate:Cascade)
 userId Int
-expenseItem expenseItem @relation(fields:[expenseItemId],references: [id])
+expenseItem expenseItem @relation(fields:[expenseItemId],references: [id],onDelete:SetNull,onUpdate:Cascade)
 expenseItemId Int
-paymentMethod paymentMethod @relation(fields:[paymentMethodId],references: [id])
+paymentMethod paymentMethod @relation(fields:[paymentMethodId],references: [id],onDelete:SetNull,onUpdate:Cascade)
 paymentMethodId Int
 }
 
 model expenseItem{
   id Int @default(autoincrement()) @id
   expenseItemName String 
-  user User @relation(fields:[userId],references: [id])
+  user User @relation(fields:[userId],references: [id],onDelete:Cascade,onUpdate:Cascade)
   userId Int
   disbursements Disbursement[]
   paymentMethods paymentMethod[]
@@ -45,7 +45,7 @@ model expenseItem{
 model paymentMethod {
   id Int @default(autoincrement()) @id
   paymentMethodName String
-  user User @relation(fields:[userId],references: [id])
+  user User @relation(fields:[userId],references: [id],onDelete:Cascade,onUpdate:Cascade)
   userId Int
  disbursements Disbursement[]
  expenseItems expenseItem[]
