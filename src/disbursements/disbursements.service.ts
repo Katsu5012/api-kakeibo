@@ -21,7 +21,7 @@ export class DisbursementsService {
 
   async updateDisbursement(
     id: number,
-    data: Prisma.DisbursementUpdateManyMutationInput,
+    data: Prisma.DisbursementUpdateInput,
   ): Promise<Disbursement> {
     return this.prisma.disbursement.update({ where: { id }, data });
   }
